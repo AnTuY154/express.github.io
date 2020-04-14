@@ -1,0 +1,10 @@
+extends ../layout/layoutPage
+block content
+	if errors
+		each error in errors
+			div= error
+	form(action="create", method="POST")
+		label(for="name") Name
+		input#name(type="text" name="xname")
+		div
+			button(type="submit") Create

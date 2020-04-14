@@ -1,0 +1,12 @@
+extends ../layout/layoutPage
+block content
+
+	h1 LOL1 
+	ul
+		each x in age
+			li
+				span= x.name + "-"+x.id
+				a(href="user/"+x.id) View
+	form(action="user", method="GET")
+		input(type="text" name="q" value=old)
+		button(type="submit") Search
