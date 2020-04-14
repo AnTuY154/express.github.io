@@ -16,27 +16,19 @@ module.exports={
       viewById :function(request,response){
         var id = parseInt(request.params.id);
         var xdb=db.get('users').find({id :id}).value();
-        
          response.render('users/view',{
             user : xdb
          });
       },
       createPost: function(req,res){
-        var q=req.body.xname;
-      var z=0;
-      var xdb=db.get('users').value();
-      if(xdb.length===0){
-        z=1;
-      }else{
-      z=parseInt(xdb[xdb.length-1].id) +1;
-    }
-     var c=new customer(q,z);
-      db.get('users').push(c).write();
-      res.redirect('./user');
-    },
+  var name =res.locals.name;
+  var z=res.locals.id;
+ var c=new customer(name,z);
+  db.get('users').push(c).write();
+  res.redirect('./user');
+},
      usersSearch :function(request,response){
         var q =request.query.q;
-       
         var search;
         var xdb=db.get('users').value();
         if(q===null ||q===undefined||q.length===0){
@@ -55,9 +47,3 @@ module.exports={
 
 
 }
-
-
-
-
-
-  

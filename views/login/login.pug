@@ -1,0 +1,12 @@
+extends ../layout/layoutPage
+block content
+	if errors
+		each error in errors
+			div= error
+	form(action="./login", method="POST")
+		label(for="userName") User Name
+		input#name(type="text" name="userName")
+		label(for="password") Password
+		input#password(type="password" name="password")
+		div
+			button(type="submit") Login
