@@ -1,0 +1,34 @@
+extends ../layout/layoutPage
+block css
+	link(rel="stylesheet",href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css",integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh", crossorigin="anonymous")
+	link(rel="stylesheet",href="../css/product.css")
+block content
+	-var n=0;
+	-var x=0;
+	-var index=0;
+	-var a=0;
+	div.container
+		div
+			if datas
+				while x<row
+					-x=x+1;
+					div.row
+						while n<3 && index <datas.length
+							-n=n+1;
+							div.col
+								.card(style='width: 18rem;')
+									img.card-img-top(src= datas[index].imagePath alt='...')
+									.card-body
+										h5.card-title #{datas[index].title}
+										p.card-text #{datas[index].shortDes}
+										a.btn.btn-primary(href='#') Go somewhere
+										-index=index+1;
+						-n=0;
+		div
+		nav(aria-label='Page navigation example')
+			ul.pagination.justify-content-center
+				while a<totalPage
+					-a=a+1;
+					li.page-item
+						a.page-link( class= a===pageIndex?"active":"", href="./products?page="+a) #{a} 
+

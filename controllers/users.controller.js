@@ -21,11 +21,11 @@ module.exports={
          });
       },
       createPost: function(req,res){
-  var name =res.locals.name;
-  var z=res.locals.id;
- var c=new customer(name,z);
-  db.get('users').push(c).write();
-  res.redirect('./user');
+    var name =res.locals.name;
+    var z=res.locals.id;
+    var c=new customer(name,z);
+    db.get('users').push(c).write();
+    res.redirect('./user');
 },
      usersSearch :function(request,response){
         var q =request.query.q;
