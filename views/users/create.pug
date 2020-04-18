@@ -3,8 +3,17 @@ block content
 	if errors
 		each error in errors
 			div= error
-	form(action="create", method="POST")
+	form(action="create", method="POST",enctype="multipart/form-data")
 		label(for="name") Name
 		input#name(type="text" name="xname")
+		br
+		label(for="password") Password
+		input#password(type="password" name="xpassword")
+		br
+		label(for="userName") User Name
+		input#userName(type="text" name="xuserName")
+		br
+		label(for="avatar") Avatar
+		input#avatar.form-control-file(type="file" name="xavatar")
 		div
 			button(type="submit") Create

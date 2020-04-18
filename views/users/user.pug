@@ -1,12 +1,25 @@
 extends ../layout/layoutPage
 block content
-
 	h1 LOL1
 	ul
 		each x in age
 			li
 				span= x.name + "-"+x.id
+				if x.path
+					img(src="../"+x.path style="width:200px")
 				a(href="user/"+x.id) View
+	button(id="demo" onclick="a()") abc
 	form(action="user", method="GET")
 		input(type="text" name="q" value=old)
 		button(type="submit") Search
+	script.
+		function a(){
+		var xhttp = new XMLHttpRequest();
+		xhttp.open('GET','user',true);
+		xhttp.onload=function(){
+		 if(this.status==200){
+		  document.getElementById("demo").innerHTML="123";
+		 }
+		}
+		xhttp.send();
+		}

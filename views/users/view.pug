@@ -3,5 +3,7 @@ block content
 
 	h2 View
 	ul
-		each x in user
-			li= x 
+		each x,nameOfx in user
+			li= x
+			if nameOfx=='path'
+				img(src="../../"+x) 

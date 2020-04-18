@@ -8,12 +8,13 @@ block content
 	-var index=0;
 	-var a=0;
 	div.container
+		button(id="demo" onclick="a()") Ajax
 		div
 			if datas
 				while x<row
 					-x=x+1;
 					div.row
-						while n<3 && index <datas.length
+						while n< pageSize && index <datas.length
 							-n=n+1;
 							div.col
 								.card(style='width: 18rem;')
@@ -21,7 +22,7 @@ block content
 									.card-body
 										h5.card-title #{datas[index].title}
 										p.card-text #{datas[index].shortDes}
-										a.btn.btn-primary(href='#') Go somewhere
+										a.btn.btn-primary(onclick='a("'+ datas[index].id +'")') Go somewhere
 										-index=index+1;
 						-n=0;
 		div
@@ -30,5 +31,15 @@ block content
 				while a<totalPage
 					-a=a+1;
 					li.page-item
-						a.page-link( class= a===pageIndex?"active":"", href="./products?page="+a) #{a} 
-
+						a.page-link( class= a===pageIndex?"active":"", href="./products?page="+a) #{a}
+	script.
+		function a(x){
+		var xhttp = new XMLHttpRequest();
+		xhttp.open('GET','../cart/show/'+x,true);
+		xhttp.onload=function(){
+		 if(this.status==200){
+		  document.getElementById("demo").innerHTML="123";
+		 }
+		}
+		xhttp.send();
+		}
